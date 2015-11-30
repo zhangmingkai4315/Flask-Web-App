@@ -2,10 +2,12 @@ from flask import Flask,render_template
 from flask import request
 from flask import current_app
 from flask import make_response,redirect,abort
+from datetime import datetime
 # ///////////////////////////
 
 from flask.ext.script import Manager
 from flask.ext.bootstrap import Bootstrap
+from flask.ext.moment import Moment
 
 # ///////////////////////////
 
@@ -22,7 +24,7 @@ def user(name):
         # response=make_response('<h1> Hi %s</h1' % name)
         # response.set_cookie('user',name)
         # return response,200
-        return render_template('user.html',name=name)
+        return render_template('user.html',name=name,current_time=datetime.utcnow())
     elif name=='admin':
         # return redirect('/')
         return render_template('admin.html',name=name)
@@ -43,5 +45,6 @@ def page_not_found(e):
 if __name__ == '__main__':
     app.debug=True
     bootstrap=Bootstrap(app)
+    moment=Moment(app)
     manager=Manager(app)
     manager.run()
