@@ -5,6 +5,7 @@ from flask import make_response,redirect,abort
 # ///////////////////////////
 
 from flask.ext.script import Manager
+from flask.ext.bootstrap import Bootstrap
 
 # ///////////////////////////
 
@@ -34,5 +35,6 @@ def userlist():
     return render_template('users.html',users=userlist)
 if __name__ == '__main__':
     app.debug=True
+    bootstrap=Bootstrap(app)
     manager=Manager(app)
     manager.run()
