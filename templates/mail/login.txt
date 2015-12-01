@@ -1,0 +1,1 @@
+Admin user login to the web system :{{user}}
